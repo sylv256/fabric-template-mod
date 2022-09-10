@@ -1,4 +1,4 @@
-package com.example.example_mod.mixin;
+package dev.cursedmc.example_mod.mixin;
 
 import net.minecraft.client.gui.screen.TitleScreen;
 import org.spongepowered.asm.mixin.Final;
