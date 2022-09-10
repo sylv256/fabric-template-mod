@@ -1,7 +1,8 @@
 @file:Suppress("UnstableApiUsage")
 
 plugins {
-	id("org.jetbrains.kotlin.jvm") version "1.7.0"
+	id("org.jetbrains.kotlin.jvm").version(libs.versions.kotlin)
+	id("org.quiltmc.quilt-mappings-on-loom") version "4.2.1"
 	alias(libs.plugins.quilt.loom)
 	`maven-publish`
 }
@@ -65,7 +66,7 @@ repositories {
 
 	maven {
 		name = "QuiltMC Snapshot"
-		url = uri("https://mavne.quiltmc.org/repository/snapshot")
+		url = uri("https://maven.quiltmc.org/repository/snapshot")
 	}
 }
 
@@ -77,7 +78,7 @@ val modImplementationInclude by configurations.register("modImplementationInclud
 dependencies {
 	minecraft(libs.minecraft)
 	mappings(loom.layered() {
-		addLayer(quiltMappings.mappings("org.quiltmc:quilt-mappings:${libs.versions.quilt.mappings.get()}:v2"))
+		addLayer(quiltMappings.mappings("org.quiltmc:quilt-mappings:${libs.versions.minecraft.get()}+build.${libs.versions.quilt.mappings.get()}:v2"))
 		// officialMojangMappings() // Uncomment if you want to use Mojang mappings as your primary mappings, falling back on QM for parameters and Javadocs
 	})
 	modImplementation(libs.quilt.loader)
