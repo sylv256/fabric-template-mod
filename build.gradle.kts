@@ -25,7 +25,7 @@ repositories {
 		name = "TerraformersMC"
 		url = uri("https://maven.terraformersmc.com/")
 	}
-
+	
 	maven {
 		name = "Modrinth"
 		url = uri("https://api.modrinth.com/maven")
@@ -33,16 +33,16 @@ repositories {
 			includeGroup("maven.modrinth")
 		}
 	}
-
+	
 	maven {
 		name = "auoeke Maven"
 		url = uri("https://maven.auoeke.net")
 	}
-
+	
 	maven {
 		url = uri("https://maven.bai.lol")
 	}
-
+	
 	maven {
 		name = "Cursed Maven"
 		url = uri("https://cursemaven.com")
@@ -50,20 +50,20 @@ repositories {
 			includeGroup("curse.maven")
 		}
 	}
-
+	
 	maven {
 		url = uri("https://repo.minelittlepony-mod.com/maven/release")
 	}
-
+	
 	maven {
 		name = "Gegy"
 		url = uri("https://maven.gegy.dev")
 	}
-
+	
 	maven {
 		url = uri("https://nexus.velocitypowered.com/repository/maven-public/")
 	}
-
+	
 	maven {
 		name = "QuiltMC Snapshot"
 		url = uri("https://maven.quiltmc.org/repository/snapshot")
@@ -83,34 +83,34 @@ dependencies {
 	})
 	modImplementation(libs.quilt.loader)
 	modImplementation(libs.quilt.lang.kotlin)
-
+	
 	modImplementationInclude(libs.core.qsl.base)
 	modImplementationInclude(libs.core.networking)
-
+	
 	modImplementationInclude(libs.block.entity)
 	modImplementationInclude(libs.block.extensions)
-
+	
 	modImplementationInclude(libs.item.group)
 	modImplementationInclude(libs.item.setting)
-
+	
 	// cursed library collection
 	implementation(include("net.auoeke", "reflect", "5.+"))
 	implementation(include("net.gudenau.lib", "unsafe", "latest.release"))
 	implementation(include("org.objenesis", "objenesis", "3.3"))
-
+	
 	// more cursed libraries
 	implementation("net.bytebuddy", "byte-buddy-agent", "1.12.+")
 	modImplementation("maven.modrinth", "yqh", "0.1.2")
-
+	
 	// must-have libraries
 	modImplementation("maven.modrinth", "sodium", "mc1.19-0.4.2")
 	modCompileOnly("mcp.mobius.waila:wthit-api:quilt-5.10.0")
-
+	
 	// QSL is not a complete API; You will need Quilted Fabric API to fill in the gaps.
 	// Quilted Fabric API will automatically pull in the correct QSL version.
 	modImplementation(libs.quilted.fabric.api)
 	// modImplementation libs.bundles.quilted.fabric.api // If you wish to use Fabric API's deprecated modules, you can replace the above line with this one
-
+	
 	modRuntimeOnly("com.terraformersmc", "modmenu", "4.0.6")
 	modRuntimeOnly("maven.modrinth", "wthit", "quilt-5.10.0")
 	modRuntimeOnly("maven.modrinth", "badpackets", "fabric-0.2.0")
@@ -134,7 +134,7 @@ dependencies {
 //	modRuntimeOnly("maven.modrinth", "c2me-fabric", "0.2.0+alpha.8.37+1.19.2")
 //	modRuntimeOnly("maven.modrinth", "libzoomer", "0.5.0+1.19")
 	modRuntimeOnly("maven.modrinth", "ears", "1.4.6+fabric-1.19")
-
+	
 	// fixme: fuck
 	modRuntimeOnly("com.minelittlepony", "kirin", "1.11.0")
 	modRuntimeOnly("dev.lambdaurora", "spruceui", "4.0.0+1.19")
@@ -144,18 +144,18 @@ dependencies {
 	modRuntimeOnly("maven.modrinth", "midnightlib", "0.5.2")
 	modRuntimeOnly("maven.modrinth", "cloth-config", "7.0.69")
 	modRuntimeOnly("org.joml", "joml", "1.10.4")
-
+	
 	add(sourceSets.main.get().getTaskName("mod", JavaPlugin.IMPLEMENTATION_CONFIGURATION_NAME), modImplementationInclude)
 	add(net.fabricmc.loom.util.Constants.Configurations.INCLUDE, modImplementationInclude)
 }
 
 tasks.processResources {
 	inputs.property("version", version)
-
+	
 	filesMatching("quilt.mod.json") {
 		expand("group" to mavenGroup, "id" to modId, "version" to version)
 	}
-
+	
 	filesMatching("**/lang/*.json") {
 		expand("id" to modId)
 	}
@@ -171,11 +171,11 @@ java {
 	// Still required by IDEs such as Eclipse and Visual Studio Code
 	sourceCompatibility = JavaVersion.VERSION_17
 	targetCompatibility = JavaVersion.VERSION_17
-
+	
 	// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task if it is present.
 	// If you remove this line, sources will not be generated.
 	withSourcesJar()
-
+	
 	// If this mod is going to be a library, then it should also generate Javadocs in order to aid with developement.
 	// Uncomment this line to generate them.
 	// withJavadocJar()
@@ -191,7 +191,7 @@ tasks.withType<AbstractArchiveTask> {
 // Configure the maven publication
 publishing {
 	publications {}
-
+	
 	// See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
 	repositories {
 		// Add repositories to publish to here.
