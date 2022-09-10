@@ -7,6 +7,8 @@ quilt_loader = "0.17.0"
 quilted_fabric_api = "2.0.0-alpha.2+0.55.3-1.19"
 qsl = "2.0.0-beta.9+1.19"
 
+quilt_lang_kotlin = "0.1.3+kt.1.7.10+flk.1.8.2-SNAPSHOT"
+
 [libraries]
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
 quilt_mappings = { module = "org.quiltmc:quilt-mappings", version.ref = "quilt_mappings" }
@@ -14,7 +16,14 @@ quilt_loader = { module = "org.quiltmc:quilt-loader", version.ref = "quilt_loade
 
 quilted_fabric_api = { module = "org.quiltmc.quilted-fabric-api:quilted-fabric-api", version.ref = "quilted_fabric_api" }
 quilted_fabric_api_deprecated = { module = "org.quiltmc.quilted-fabric-api:quilted-fabric-api-deprecated", version.ref = "quilted_fabric_api" }
-qsl_base = { module = "org.quiltmc.qsl.core:qsl_base", version.ref = "qsl" }
+core_qsl_base = { module = "org.quiltmc.qsl.core:qsl_base", version.ref = "qsl" }
+core_networking = { module = "org.quiltmc.qsl.core:networking", version.ref = "qsl" }
+block_entity = { module = "org.quiltmc.qsl.block:block_entity", version.ref = "qsl" }
+block_extensions = { module = "org.quiltmc.qsl.block:block_extensions", version.ref = "qsl" }
+item_group = { module = "org.quiltmc.qsl.item:item_group", version.ref = "qsl" }
+item_setting = { module = "org.quiltmc.qsl.item:item_setting", version.ref = "qsl" }
+
+quilt_lang_kotlin = { module = "org.quiltmc.quilt-kotlin-libraries:quilt-kotlin-libraries", version.ref = "quilt_lang_kotlin" }
 
 # If you have multiple similar dependencies, you can declare a dependency bundle and reference it on the build script with "libs.bundles.example".
 [bundles]
